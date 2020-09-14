@@ -8,3 +8,5 @@ N
 src/Main.java,9\2\924f089edb4af5ee45c8a9d1129cd28e2b368138
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
+@
+src/Message.java,4\3\43c72cf24687297679ab21aef9fea90b45847f3f
