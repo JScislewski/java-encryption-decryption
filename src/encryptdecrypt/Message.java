@@ -1,17 +1,17 @@
+package encryptdecrypt;
+
 public class Message {
-  public static final int A = 97;
-  public static final int Z = 122;
   private String encrypted;
   private String decrypted;
   private int key;
 
   public Message(String command, String input, int key) {
     this.key = key;
-    if (command.equals("encrypt")) {
-      decrypted = input.toLowerCase();
+    if (command.equals("enc")) {
+      decrypted = input;
       encrypt();
     } else {
-      encrypted = input.toLowerCase();
+      encrypted = input;
       decrypt();
     }
   }
@@ -44,25 +44,26 @@ public class Message {
     StringBuilder encryptedBuilder = new StringBuilder();
     for (int i = 0; i < decrypted.length(); i++) {
       char currentChar = decrypted.charAt(i);
-      if (currentChar >= A && currentChar <= Z) {
-        char encryptedChar = ((char) (currentChar + key));
-        if (encryptedChar > Z) {
-          encryptedChar = (char) (A + (encryptedChar % 123));
-        }
-        encryptedBuilder.append(encryptedChar);
-      } else {
-        encryptedBuilder.append(currentChar);
-      }
+      char encryptedChar = ((char) (currentChar + key));
+      encryptedBuilder.append(encryptedChar);
     }
     encrypted = encryptedBuilder.toString();
   }
 
-  private void decrypt() {}
+  private void decrypt() {
+    StringBuilder decryptedBuilder = new StringBuilder();
+    for (int i = 0; i < encrypted.length(); i++) {
+      char currentChar = encrypted.charAt(i);
+      char encryptedChar = ((char) (currentChar - key));
+      decryptedBuilder.append(encryptedChar);
+    }
+    decrypted = decryptedBuilder.toString();
+  }
 
   @Override
   public String toString() {
     return (
-      "Message{" +
+      "encryptiondecryption.encryptdecrypt.Message{" +
       "encrypted='" +
       encrypted +
       '\'' +
